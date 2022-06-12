@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Malawi Police- Survey Login </title>
+
+    <!-- tab icon-->
+    <link rel="icon" type="image/x-icon" href="Assets/logo/logo.png" />
+
+    <!-- Includes Jquery -->
+    <script src="Script/jquery-3.5.1.min.js"></script>
+    <script src="Script/jquery.validate.min.js"></script>
+
+    <!-- CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link href="Style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <img src="Resources/Malawi Police logo.jpg" alt="" srcset="">
+        <h4>Malawi Police Survey</h4>
+        <form class="Login" action="index.php" method="POST">
+            <h4>Login</h4>
+            <label for="" id="alet">Alert</label>
+            <input type="text" name="Username" placeholder="Username" id="Username">
+            <input type="password" name="Password" placeholder="Password" id="Password">
+            <a href="ForgotPassword.html" class="forgotpassword">Forgot Password</a>
+            <input type="submit" value="Login">
+            <input id="signup" type="button" value="Signup">
+
+            <!-- Button trigger modal -->
+            <a href="#" class="help" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Help</a>
+        </form>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        How to Login
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <video class="Help-login" src="Help/Login-Help.mp4" autoplay loop muted></video>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // $('#myModal').modal(options);
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: "valid"
+        });
+
+        $('form').on('submit', function (event) {
+            event.preventDefault();
+            var form_data = $(this).serialize();
+
+            // form validation
+            $('form').validate({
+                rules: {
+                    Username: {
+                        required: true
+                    },
+                    Password: {
+                        required: true,
+                        maxlength: 10,
+                        minlength: 8
+                    }
+                },
+                messages: {
+                    Username: {
+                        required: 'Enter your Username'
+                    },
+                    Password: {
+                        maxlength: 'Enter minimum of 16 charaters',
+                        minlength: 'Enter atleast 8 characters'
+                    }
+                }
+            });
+
+
+            if ($('form').valid() == true) {
+                $.ajax({
+                    url: 'CheckAccount.php',
+                    method: "POST",
+                    data: form_data,
+                    dataType: "JSON",
+                    success: function (data) {
+                        if (data.Success == true) {
+                            $('form')[0].reset();
+                            $('#alet').html("Welcome");
+                            $('#alet').css('background-color', 'rgba(13, 187, 50, 0.842)');
+                            window.location.replace('index.php');
+                        }
+                        else if (data.NoAccount) {
+                            $('#alet').html('Account Doesnt exist');
+                            $('#alet').css('background-color', 'rgba(197, 6, 6, 0.842)');
+                            $('#Username').focus();
+                        } else if (data.WrongPassword == true) {
+                            $('#alet').html('Wrong password');
+                            $('#alet').css('background-color', 'rgba(197, 6, 6, 0.842)');
+                            $('#Password').focus();
+                        }
+                    }
+                });
+            }//the end
+        });
+
+        $('#signup').click(function () {
+            window.location.replace('Signup.html');
+        });
+    });
+</script>
+
+</html>

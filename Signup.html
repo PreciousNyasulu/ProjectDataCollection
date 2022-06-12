@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Malawi Police- Survey Register </title>
+    <!-- tab icon-->
+    <link rel="icon" type="image/x-icon" href="Assets/logo/logo.png" />
+    <!-- CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Includes Jquery -->
+    <script src="Script/jquery-3.5.1.min.js"></script>
+    <script src="Script/jquery.validate.min.js"></script>
+    <link href="Style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <img src="Resources/Malawi Police logo.jpg" alt="" srcset="">
+        <form autocomplete='off' action="" method="post" class="Signup">
+            <h4>Create Account</h4>
+            <label for="" id="alet" >Alert</label>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <select id="sex" name="sex" class="Sex">
+                <option value="">--Gender--</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <input type="date" name="DOB" id="DOB" placeholder="Date of birth">
+            <select type="text" name="location" id="location" placeholder="location eg. Lilongwe, Area 25">
+                <option value="">--District--</option>
+                <option value="Dedza">Dedza</option>
+                <option value="Dowa">Dowa</option>
+                <option value="Kasungu">Kasungu</option>
+                <option value="Lilongwe">Lilongwe</option>
+                <option value="Mchinji">Mchinji</option>
+                <option value="Nkhotakota">Nkhotakota</option>
+                <option value="Ntcheu">Ntcheu</option>
+                <option value="Ntchisi">Ntchisi</option>
+                <option value="Salima">Salima</option>
+                <option value="Chitipa">Chitipa</option>
+                <option value="Karonga">Karonga</option>
+                <option value="Likoma">Likoma</option>
+                <option value="Mzimba">Mzimba</option>
+                <option value="Nkhata Bay">Nkhata Bay</option>
+                <option value="Rumphi">Rumphi</option>
+                <option value="Balaka">Balaka</option>
+                <option value="Blantyre">Blantyre</option>
+                <option value="Chikhwawa">Chikhwawa</option>
+                <option value="Chiradzuru">Chiradzuru</option>
+                <option value="Machinga">Machinga</option>
+                <option value="Mangochi">Mangochi</option>
+                <option value="Mulanje">Mulanje</option>
+                <option value="Mwanza">Mwanza</option>
+                <option value="Nsanje">Nsanje</option>
+                <option value="Thyolo">Thyolo</option>
+                <option value="Phalombe">Pholombe</option>
+                <option value="Zomba">Zomba</option>
+                <option value="Neno">Neno</option>
+            </select>
+            <input type="text" name="occupation" id="occupation" placeholder="Occupation">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="confpassword" id="confpassword" placeholder="Confirm Password">
+            <input type="submit" value="Submit">
+
+            <a href="Login.html" class="haveaccount">Already have an account?</a>
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: "valid"
+        });
+
+        $('form').on('submit', function (event) {
+            event.preventDefault();
+            var form_data = $(this).serialize();
+
+            // form validation
+            $('form').validate({
+                rules: {
+                    username: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    DOB: {
+                        required: true
+                    },
+                    sex: {
+                        required: true
+                    },
+                    location: {
+                        required: true
+                    },
+                    occupation : {
+                        required : true
+                    },
+                    password: {
+                        required: true,
+                        maxlength: 10,
+                        minlength: 8
+                    },
+                    confpassword: {
+                        required: true,
+                        equalTo: '#password'
+                    }
+                },
+                messages: {
+                    username: {
+                        required: 'Enter your Username'
+                    },
+                    email: {
+                        required: 'Enter your email address'
+                    },
+                    password: {
+                        maxlength: 'Enter minimum of 16 charaters',
+                        minlength: 'Enter atleast 8 characters'
+                    },
+                    confpassword: {                        
+                        equalTo: 'Password dont match'
+                    }
+                }
+            });
+
+
+            if ($('form').valid() == true) {
+                $.ajax({
+                    url: 'AddAccount.php',
+                    method: "POST",
+                    data: form_data,
+                    dataType: "JSON",
+                    success: function (data) {
+                        if (data.error == true) {
+                            $('form')[0].reset();
+                            $('#alet').html("Account created");
+                            $('#alet').css('background-color', 'rgba(13, 187, 50, 0.842)');
+                            window.location.replace('Login.html');
+                        }
+                        else {                            
+                            $('#alet').html('Account already exist');
+                            $('#alet').css('background-color', 'rgba(197, 6, 6, 0.842)');
+                            $('#username').focus();
+                        }
+
+                        if (data.email) {
+                            $('#alet').html('An account is already registered with this email address.');
+                            $('#alet').css('background-color', 'rgba(197, 6, 6, 0.842)');
+                            $('#email').focus();
+                        }
+                    }
+                });
+            }//the end
+        });
+    });
+</script>
+
+</html>

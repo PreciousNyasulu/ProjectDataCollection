@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Top Oil Reserves"
+	},
+	axisY: {
+		title: "Reserves(MMbbl)"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "MMbbl = one million barrels",
+		dataPoints: [      
+			{ y: 300878, label: "Dedza" },
+			{ y: 266455,  label: "Dowa" },
+			{ y: 169709,  label: "Kasungu" },
+			{ y: 158400,  label: "Lilongwe" },
+			{ y: 142503,  label: "Mchinji" },
+			{ y: 101500, label: "Nkhotakota" },
+			{ y: 97800,  label: "Ntcheu" },
+			{ y: 80000,  label: "Ntchisi" },
+			{ y: 80000,  label: "Salima" },
+			{ y: 80000,  label: "Chitipa" },
+			{ y: 80000,  label: "Karonga" },
+			{ y: 80000,  label: "Likoma" },
+			{ y: 80000,  label: "Mzimba" },
+			{ y: 80000,  label: "Nkhata Bay" },
+			{ y: 80000,  label: "Rumphi" },
+			{ y: 80000,  label: "Balaka" },
+			{ y: 80000,  label: "Blantyre" },
+			{ y: 80000,  label: "Chikhwawa" },
+			{ y: 80000,  label: "Chiradzulu" },
+			{ y: 80000,  label: "Machinga" },
+			{ y: 80000,  label: "Mangochi" },
+			{ y: 80000,  label: "Mulanje" },
+			{ y: 80000,  label: "Mwanza" },
+			{ y: 80000,  label: "Nsanje" },
+			{ y: 80000,  label: "Thyolo" },
+			{ y: 80000,  label: "Phalombe" },
+			{ y: 80000,  label: "Zomba" },
+			{ y: 80000,  label: "Neno" }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; max-width: 100%; margin: 0px auto;"></div>
+<script src="../../canvasjs.min.js"></script>
+</body>
+</html>

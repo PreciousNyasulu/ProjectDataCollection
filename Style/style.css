@@ -1,0 +1,642 @@
+body{
+    font-family: roboto;
+}
+
+.header{
+    padding: 25px;
+    background-color: #F2F2F2;
+}
+
+.header .profilepic {
+    width: 45px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+}
+
+.ProfileLabel{
+    position: relative;
+    margin-left: 10px;
+    padding-right: 10px;
+    font-size: 25px;
+    color: #707070;
+    top: +4px;
+    border-right:2.2px #BABDBD solid;
+}
+
+a.statistics , a.notifications{
+    position: relative;
+    margin-left: 14px;
+    text-decoration: none;
+    top: -2px;
+}
+
+.statistics img {
+    width: 38px;
+}
+
+.notifications img{
+    position: inherit;
+    width: 30px;
+}
+
+.statistics span, .notifications span{
+    position: relative;
+    font-size: 19px;
+    padding: 10px;
+    color: #BABDBD;
+    top: +5px;
+}
+
+.policelogo img{
+    width: 50px;
+    margin-left: 100px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.header .btn {
+    position: relative;
+    float: right;
+    top: +6px;
+}
+
+.header .btn:hover{
+    border:2px #00a8ff solid;
+    background-color: #F2F2F2;
+    color: #00A8FF;
+}
+
+.noti{
+    position: relative;
+    left: -18px;
+    top: +7px;
+    color: white;
+    background-color: #00A8FF;
+    text-align: center;
+    padding: 0px;
+    font-size: 12px;
+    display: inline-block;
+    margin: 0%;
+    width: 18px;
+    height: 18px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.survey{
+    width: 60%;
+    float: right;
+    padding-top: 100px;
+    border-left: 2px #BABDBD solid;
+}
+
+.survey form{
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+.survey p{
+    font-size: 25px;
+    color: #707070;
+    text-align: center;
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.answers{
+    padding-top: 50px;
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+.answers *{
+    padding:10px;
+    margin-bottom: 20px;
+}
+
+.answers label{
+    display: inline-block;
+    background-color: #00A8FF;
+    min-width: 250px ;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.answers label:hover{
+    background-color: #049AE6;
+}
+
+.answers input[type='radio']{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: +5px;
+}
+
+.survey .btn-primary{
+    background-color: #00A8FF;
+    width: 100px;
+    float: right;
+}
+
+.survey .btn-default{
+    background-color: #BABDBD;
+    color: white;
+}
+
+.recent{
+    float: left;
+    display: block;
+    width: 40%;
+}
+
+.recent span.title{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: #707070;
+    font-size: 20px;
+}
+
+.recent .poll{
+    
+    margin: 9%;
+    padding: 4.6%;
+    border: 2px #8d8989 solid;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.poll a{
+    text-decoration: none;
+}
+
+.recent img{
+    width: 50px;
+}
+
+.polltitle{
+    font-size: 17px;
+    color: #8d8989;
+    font-weight: 550;
+}
+
+@media only screen and (max-width:1000px){
+    .policelogo{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:780px){
+    .statistics ,.noti, .ProfileLabel, .notifications{
+        display: none;
+    }
+
+    .header{
+        border-bottom: 0.2px #707070 solid;
+    }
+
+    .header .btn{
+        display: none;
+    }
+
+    .profilepic{
+        float: right;
+        transition: 0.8s;
+    }
+
+    .menu-mobile{
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .noti-mobile{
+        position: relative;
+        left: -17px;
+        top: +17px;
+        color: white;
+        background-color: #00A8FF;
+        text-align: center;
+        padding: 0px;
+        font-size: 12px;
+        display: inline-block;
+        margin: 0%;
+        width: 18px;
+        height: 18px;
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+    }
+
+    .survey{
+        width: 100%;
+        padding-top: 60px;
+    }
+
+    .recent{
+        padding-top: +20px;
+        float: none;
+        width: 90%;
+        display: block;
+        margin: auto;
+        margin-top: 100px;
+    }
+
+    .header, .survey, .recent{
+        transition: .8s;
+        -webkit-transition: .8s;
+        -moz-transition: .8s;
+        -ms-transition: .8s;
+        -o-transition: .8s;
+    }
+
+    .SlideBar{
+        transition: .8s;
+        position: fixed;
+        top: 0px;
+        left: -70%;
+        width: 70%;
+        display: block;
+        float: left;
+        background-color:#F2F2F2;
+        padding: 10px;
+        height: 100%;
+        -webkit-transition: .8s;
+        -moz-transition: .8s;
+        -ms-transition: .8s;
+        -o-transition: .8s;
+}
+
+    .SlideBar .profilepic-mobile{
+        width: 45px;
+        display: block;
+        margin: auto;
+        margin-top: 12px;
+        margin-bottom: 40px;
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+    }
+
+    .SlideBar .cancel{
+        width: 35px;
+        position: relative;
+        padding-left: 5px;
+        float: right;
+        cursor: pointer;
+    }
+
+    .SlideBar a{
+        text-decoration: none;
+        width: fit-content;
+        display: block;
+        margin: auto;
+        margin-left: 25px;
+        padding: 10px;
+        color: #8d8989;
+        font-size: 20px;
+    }
+
+    .SlideBar .btn-primary{
+        margin-top: 20px;
+        margin-left: +33px;
+        color: #F2F2F2;
+        height: 50px;
+        width: 110px;        
+    }
+}
+
+@media only screen and (min-width:780px){ 
+    .noti-mobile{
+        display: none;
+        
+    }  
+    
+    .menu-mobile{
+        display: none;
+    }
+
+    .SlideBar{
+        display: none;
+    }
+
+}
+
+.container{
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+.container img{
+    width: 100px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+.container h4{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    color: #707070;
+    font-weight: 500;
+}
+
+.Login, .Signup{
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.Login h4,.Signup h4{
+    color: #999999;
+    font-weight: 500;
+    width: fit-content;
+    display: block;
+    margin: auto;
+}
+
+.container input[type="text"], .container input[type='date'], .container input[type='password'] ,
+.container input[type='email'], select{
+    width: 45%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px;
+    font-size: large;
+    border: 0px;
+    border-bottom: 2px #999999 solid;    
+}
+
+.container input[type="submit"],.container input[type="button"]{
+    width: 150px;
+    padding: 8px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    background-color: #00A8FF;
+    color: #F2F2F2;
+    font-size: large;
+    border: 0px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.forgotpassword , .help, .haveaccount{
+    width: 45%;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    padding: 5px;
+    color: #999999;
+    font-size: larger;
+}
+
+.help{
+    text-align: center;
+}
+
+.Login input[type="submit"]:hover, input[type="button"]:hover{
+    background-color: #049AE6;
+}
+
+
+/* forgot password */
+.container h5{
+    width: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    color: #BABDBD;
+    text-align: center;
+}
+
+
+/* statistics */
+.statistics-container{
+    width: 100%;
+}
+
+.statistics-container h4{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    color: #8d8989;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.key{
+    width: 50%;
+    padding: 50px;
+    float: left;
+}
+
+.key .box-option{
+    border-left: 15px #F26925 solid;
+    color: #BABDBD;
+    font-size: 19px;
+    width: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.box-option:nth-child(2){
+    border-left: 15px #85B9D1 solid;
+}
+
+.box-option:nth-child(3){
+    border-left: 15px #A9D15E solid;
+}
+
+.piechart{
+    width: 50%;
+    padding: 50px;
+    float: right;
+}
+
+.piechart svg{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    float: left;
+}
+
+#alet{
+    width: 45%;
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+label.error{
+    width: fit-content;
+    display: block;
+    margin: auto;
+    color: orangered;
+}
+@media only screen and (max-width:766px){
+    .container{
+        width:100% ;
+    }
+
+    .container input[type="text"],.forgotpassword, .haveaccount, .container input[type="text"], .container input[type='date'], .container input[type='password'] ,
+    .container input[type='email'], select,#alet{
+        width: 80%;
+    }
+
+    .container h5{
+        width: fit-content;
+    }
+
+}
+
+
+@media only screen and (max-width:1000px){
+    .key{
+        display: inline-block;
+        width: 100%;
+    }
+
+    .piechart{
+        display: inline-block;
+        width: 100%;
+    }
+
+    .piechart svg{
+        width: 200px;
+        display: block;
+        margin: auto;
+        float: none;
+    }
+}
+
+.container .loading{
+    width: 40px;
+    opacity: 0%;
+}
+
+.notificationcontainer{
+    padding: 10px;
+    width: 80%;  
+    display: block;  
+    margin: auto;
+}
+
+.notification{
+    width: fit-content;
+    max-width: 430px;
+    display: block;
+    margin: auto;
+    margin-top: 7px;    
+    padding: 10px;
+    transition: 0.9s;
+    -webkit-transition: 0.9s;
+    -moz-transition: 0.9s;
+    -ms-transition: 0.9s;
+    -o-transition: 0.9s;
+}
+
+.notification img{
+    width: 60px;
+    float: left;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+.notification span.sender{
+    padding: 10px;
+    overflow: hidden;
+}
+
+.notification .date , .time{
+    float: left;
+    padding: 10px;
+    font-size: small;
+    color: #707070;
+}
+
+.notification .time{
+    float: right;
+    color: #049AE6;
+}
+
+.notification .sender~img{
+    float: right;
+    width: 35px;
+    transition: .9s;
+    -webkit-transition: .9s;
+    -moz-transition: .9s;
+    -ms-transition: .9s;
+    -o-transition: .9s;
+}
+
+.notification p{
+    display: none;
+    width: inherit;    
+    float: right; 
+    padding-top: 10px;    
+}
+
+#clicked{
+    rotate: 180deg;
+    transition: .9s;
+    -webkit-transition: .9s;
+    -moz-transition: .9s;
+    -ms-transition: .9s;
+    -o-transition: .9s;
+}
+
+.close{
+    float: left;
+}
+
+.modal-body video{
+    width: 100%;    
+}

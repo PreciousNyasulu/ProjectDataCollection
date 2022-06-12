@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Malawi Police- Data poll </title>
+    <!-- tab icon-->
+    <link rel="icon" type="image/x-icon" href="Assets/logo/logo.png" />
+    <!-- CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Includes Jquery -->
+    <script src="Script/jquery-3.5.1.min.js"></script>
+    <script src="Script/jquery.validate.min.js"></script>
+    <link href="Style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header">
+
+        <!-- Full screeen alements -->
+        <img class="profilepic" src="Resources/Profile Pic.jpg" alt="" srcset="">
+        <span class="ProfileLabel">
+            <?php echo($_SESSION['User']); ?>
+        </span>
+
+        <a href="Statistics.php" class="statistics">
+            <img src="Resources/icons8_pie_chart.svg" alt="" srcset="">
+            <span>Statistics</span>
+        </a>
+        <span class="noti stat">1</span>
+
+        <a href="Notifications.php" class="notifications">
+            <img src="Resources/icons8_notification.svg" alt="" srcset="">
+            <span>Notifications</span>
+        </a>
+        <span class="noti notif">0</span>
+
+        <a href="#" class="policelogo">
+            <img src="Resources/Malawi Police logo.jpg" alt="" srcset="">
+        </a>
+        <!-- end of fullscreeen elements -->
+
+        <!-- mobile screeen elements -->
+        <img class="menu-mobile" src="Resources/icons8_squared_menu.svg" alt="" srcset="">
+        <span class="noti-mobile notif-mobile">0</span>
+
+        <!-- Logout -->
+        <a href="Logout.php" id="logout" class="btn btn-primary">Logout</a>
+    </div>
+
+    <div class="survey">
+        <form action="" method="post">
+            <label for="" id="alet">Alert</label>
+            <p class="question"></p>
+            <div class="answers">
+                <input type="radio" name="Answer" id="option1" value="At night">
+                <label class="option1" for="option1">At night</label>
+                <br>
+                <input type="radio" name="Answer" id="option2" value="During day time">
+                <label class="option2" for="option2">During day time</label>
+                <br>
+                <input type="radio" name="Answer" id="option3" value="During Holidays">
+                <label class="option3" for="option3">During Holidays</label>
+            </div>
+            <input type="button" value="Submit" class="btn btn-default" id="previous">
+            <input type="button" value="Next" class="btn btn-primary" id="next">
+        </form>
+    </div>
+
+    <div class="recent">
+        <span class="title">RECENT POLLS</span>
+        <div class="poll">
+            <a href="#">
+                <img src="Resources/icons8_poll_1.svg" alt="">
+                <span class="polltitle">January Poll Results</span>
+            </a>
+        </div>
+
+        <div class="poll">
+            <a href="#">
+                <img src="Resources/icons8_poll_1.svg" alt="">
+                <span class="polltitle">February Poll Results</span>
+            </a>
+        </div>
+
+        <div class="poll">
+            <a href="#">
+                <img src="Resources/icons8_view_more.svg" alt="">
+                <span class="polltitle">More Poll Results</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile SlideBar -->
+    <div class="SlideBar">
+        <img class="cancel" src="Resources/icons8_multiply.svg" alt="">
+        <img class="profilepic-mobile" src="Resources/Profile Pic.jpg" alt="" srcset="">
+        <hr>
+        <a href="#">Home</a>
+        <a href="Statistics.php" class="Statistics-mobile">Statistics</a>
+        <a href="Notifications.php" class="Notifications-mobile">Notifications</a>
+        <a href="Logout.php" class="btn btn-primary">Logout</a>
+    </div>
+</body>
+
+<Script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(loadnotification,3000);
+        
+        var index = 0;
+        loadpollnext(0);
+        setInterval(1000);
+
+
+        var form_data = $('form').serialize();
+
+        $('a#logout').click(function () {
+            // window.location.replace('Logout.php');            
+        });
+
+        $('#next').click(function () {
+            index = index + 1;
+            loadpollnext(index);
+        });
+
+        $('.option1').click(function () {
+            SubmitAnswer($(this).text(), $('.question').text());
+        });
+
+        $('.option2').click(function () {
+            SubmitAnswer($(this).text(), $('.question').text());
+        });
+
+        $('.option3').click(function () {
+            SubmitAnswer($(this).text(), $('.question').text());
+        });
+
+        function SubmitAnswer(answer, question) {
+            $.ajax({
+                url: 'SelectAnswer.php',
+                method: "POST",
+                data: {
+                    Question: question,
+                    Answer: answer
+                },
+                dataType: "JSON",
+                success: function (data) {
+
+                    if (data.error == false) {
+                        $('#alet').html('Thank you for your contribution.');
+                        $('#alet').css('background-color', 'rgba(13, 187, 50, 0.842)');
+                    } else {
+                        $('#alet').html('There was an error while submitting your answer.');
+                        $('#alet').css('background-color', 'rgba(197, 6, 6, 0.842)');
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    alert(errorMessage);
+                }
+            });
+        }
+
+
+
+        $.ajax({
+            url: 'LoadDetails.php',
+            method: "POST",
+            data: { username: '' },
+            dataType: "json",
+            success: function (data) {
+                if (data.notnum != 0) {
+                    $('.notif').text(data.notnum);
+                    $('.noti-mobile').text(data.notnum);
+                    // alert(data.notnum);
+                } else {
+                    $('.notif').hide();
+                    $('.noti-mobile').hide();
+                    // alert(data.notnum);
+                }
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                alert(errorMessage);
+            }
+        });
+
+        
+
+        function loadnotification() {
+            $.ajax({
+                url: 'LoadDetails.php',
+                method: "POST",
+                data: { username: '' },
+                dataType: "json",
+                success: function (data) {
+                    if (data.notnum != 0) {
+                        $('.notif').text(data.notnum);
+                        $('.noti-mobile').text(data.notnum);
+                        // alert(data.notnum);
+                    } else {
+                        $('.notif').hide();
+                        $('.noti-mobile').hide();
+                        // alert(data.notnum);
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    alert(errorMessage);
+                }
+            });
+        }
+
+        function loadpollnext(index) {
+            $('form')[0].reset();
+            $('#alet').css('background', 'transparent');
+            $.ajax({
+                url: 'LoadPolls.php',
+                method: "POST",
+                data: {
+                    DBindex: index,
+                    next: true
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.found == true) {
+                        $('.question').html(data.Question);
+                        // setting option1
+                        $('.option1').html(data.option1);
+                        $('#option1').attr('value', data.option1);
+                        //setting up option2
+                        $('.option2').html(data.option2);
+                        $('#option2').attr('value', data.option2);
+                        //setting up option3
+                        $('.option3').html(data.option3);
+                        $('#option3').attr('value', data.option3);
+                    } else {
+                        alert('End of Survey');
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    $('#alet').html('End of Survey');
+                    $('#alet').css('background-color', 'rgba(13, 187, 50, 0.842)');
+                }
+            });
+        }
+
+        // sildebar in
+        $('.menu-mobile').click(function () {
+            $('.SlideBar').css("left", "0px");
+            $('.header, .survey, .recent').css('filter', 'blur(2px)');
+            $('.profilepic').css('opacity', '0%');
+        });
+
+        // slidebar out
+        $('.cancel').click(function () {
+            $('.SlideBar').css("left", "-70%");
+            $('.header, .survey, .recent').css('filter', 'none');
+            $('.profilepic').css('opacity', '100%');
+        });
+    });
+</Script>
+
+</html>

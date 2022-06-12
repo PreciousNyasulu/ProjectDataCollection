@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+	
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Military Expenditure of Countries: 2016"
+	},
+	axisX: {
+		interval: 1
+	},
+	axisY: {
+		title: "Expenses in Billion Dollars",
+		scaleBreaks: {
+			type: "wavy",
+			customBreaks: [{
+				startValue: 80,
+				endValue: 210
+				},
+				{
+					startValue: 230,
+					endValue: 600
+				}
+		]}
+	},
+	data: [{
+		type: "bar",
+		toolTipContent: "<img src='malawi.png' style='width:40px; height:20px;'> <b>{label}</b><br>Budget: ${y}bn<br>{gdp}% of GDP",
+		dataPoints: [
+			{ label: "Dowa", y: 17.8, gdp: 5.8, url: "malawi.png" },
+			{ label: "Dedza", y: 22.8, gdp: 5.7, url: "uae.png" },
+			{ label: "Kasungu", y: 22.8, gdp: 1.3, url: "brazil.png"},
+			{ label: "Lilongwe", y: 24.3, gdp: 2.0, url: "australia.png" },
+			{ label: "Mchinji", y: 36.8, gdp: 2.7, url: "skorea.png" },
+			{ label: "Nkhotakota", y: 41.1, gdp: 1.2, url: "germany.png" },
+			{ label: "Ntcheu", y: 46.1, gdp: 1.0, url: "japan.png" },
+			{ label: "Ntchisi", y: 48.3, gdp: 1.9, url: "uk.png" },
+			{ label: "Salima", y: 55.9, gdp: 2.5, url: "india.png" },
+			{ label: "Chitipa", y: 69.2, gdp: 5.3, url: "russia.png" },
+			{ label: "Karonga", y: 215.7, gdp: 1.9, url: "china.png" },
+			{ label: "Likoma", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Mzimba", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Nkhata Bay", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Rumphi", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Balaka", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Blantyre", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Chikhwawa", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Chiradzulu", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Machinga", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Mangochi", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Mulanje", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Mwanza", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Nsanje", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Thyolo", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Phalombe", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Zomba", y: 611.2, gdp: 3.3, url: "us.png" },
+			{ label: "Neno", y: 611.2, gdp: 3.3, url: "us.png" }			
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 700px; max-width:100%; margin: 0px auto;"></div>
+<script src="../../canvasjs.min.js"></script>
+</body>
+</html>
